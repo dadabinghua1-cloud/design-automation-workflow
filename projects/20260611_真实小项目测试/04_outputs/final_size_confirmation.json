@@ -9,9 +9,9 @@
       "target_size": "1080x1920px",
       "current_pixel_size": "941x1672px",
       "current_status": "视觉预览通过，待正式尺寸确认",
-      "size_decision": "待确认",
-      "final_action": "待决定",
-      "notes": "当前像素小于目标像素，需确认是否重制、放大或进入 PS / Figma 处理。"
+      "size_decision": "需要重制到目标像素",
+      "final_action": "重制为1080x1920px正式尺寸底图",
+      "notes": "当前像素小于目标像素，不建议直接放大作为最终交付图。后续需重制或重新导出为1080x1920px。"
     },
     {
       "figure": "图4",
@@ -19,9 +19,9 @@
       "target_size": "2424x1242px",
       "current_pixel_size": "1752x898px",
       "current_status": "视觉预览通过，待正式尺寸确认",
-      "size_decision": "待确认",
-      "final_action": "待决定",
-      "notes": "当前像素小于目标像素，需确认是否重制、放大或进入 PS / Figma 处理。"
+      "size_decision": "需要重制到目标像素",
+      "final_action": "重制为2424x1242px正式尺寸底图",
+      "notes": "当前像素小于目标像素，不建议直接放大作为最终交付图。后续需重制或重新导出为2424x1242px。"
     },
     {
       "figure": "图8",
@@ -29,9 +29,9 @@
       "target_size": "4x2.5m",
       "current_pixel_size": "1586x992px",
       "current_status": "视觉预览通过，待正式尺寸确认",
-      "size_decision": "待确认",
-      "final_action": "待决定",
-      "notes": "目标尺寸为印刷 / 大尺寸规格，需后续确认 DPI、出血和实际交付规格。"
+      "size_decision": "需要确认印刷规格",
+      "final_action": "确认DPI、出血、安全区和实际交付规格",
+      "notes": "目标尺寸为4x2.5m，必须先确认DPI、出血、安全区和交付格式，再决定是否重制或进入印刷文件处理。"
     }
   ]
 }

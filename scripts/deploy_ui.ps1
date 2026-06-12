@@ -163,16 +163,16 @@ $statusCounts = [PSCustomObject]@{
 }
 
 $nextAction = [PSCustomObject]@{
-    title = "正式尺寸决策"
+    title = "等待尺寸执行确认"
     stage = "v1.2-final-size-confirmation-draft"
-    recommendation = "先确认图1、图4、图8的正式尺寸处理方式"
-    reason = "图1、图4、图8已经视觉预览通过，但还不是最终生产尺寸"
+    recommendation = "先等待用户确认是否开始重制图1、图4，并补充图8印刷规格"
+    reason = "图1和图4已决策为需要重制到目标像素；图8需要确认DPI、出血、安全区和实际交付规格"
     blockedActions = @(
         "暂不建议继续美化UI",
         "暂不建议接API自动出图",
         "暂不建议一次性生成全部15张"
     )
-    codexCommand = "请基于当前项目更新 final_size_confirmation：图1需要重制到1080x1920px；图4需要重制到2424x1242px；图8需要确认印刷规格、DPI、出血和安全区。请更新 final_size_confirmation.csv/json、WORKFLOW_STATUS.md、docs/data/app-data.json，并生成尺寸决策报告。不要生成图片，不要接API，不要接Figma或Photoshop。"
+    codexCommand = "请基于当前项目进入正式尺寸执行准备：图1已决策为重制到1080x1920px，图4已决策为重制到2424x1242px，图8需要等待用户补充DPI、出血、安全区和交付格式。请只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop。"
 }
 
 $data = [PSCustomObject]@{
