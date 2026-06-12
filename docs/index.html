@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design Automation Workflow</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Design Automation Workflow 首页">
+        <span class="brand-mark">DA</span>
+        <span>
+          <strong>Design Automation Workflow</strong>
+          <small>GitHub Pages UI</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#assets">素材库</a>
+        <a href="#prompts">提示词</a>
+        <a href="#previews">视觉预览</a>
+        <a href="#register">输出登记</a>
+        <a href="#queue">项目队列</a>
+      </nav>
+      <button class="icon-button" id="themeToggle" type="button" title="切换暗色 / 浅色模式">◐</button>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Workflow 1.1</p>
+          <h1>从素材、提示词到预览登记的一屏管理台</h1>
+          <p class="lead">用于管理设计延展项目的输入素材、提示词、出图队列、视觉预览与输出状态。当前版本预留 API 能力，但不自动调用图片生成。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#assets">查看素材</a>
+            <a class="button" href="#queue">查看出图队列</a>
+          </div>
+        </div>
+        <div class="status-panel" aria-label="项目状态">
+          <div>
+            <span>项目</span>
+            <strong id="projectName">加载中</strong>
+          </div>
+          <div>
+            <span>版本</span>
+            <strong id="workflowVersion">1.1</strong>
+          </div>
+          <div>
+            <span>提示词</span>
+            <strong id="promptTotal">0</strong>
+          </div>
+          <div>
+            <span>视觉通过</span>
+            <strong id="visualPassed">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="上传入口">
+        <button type="button" data-upload="KV">上传主 KV</button>
+        <button type="button" data-upload="PPT">上传 PPT</button>
+        <button type="button" data-upload="References">上传素材</button>
+        <button type="button" data-upload="Logo">上传 Logo</button>
+        <button type="button" data-upload="Size">上传尺寸表</button>
+      </section>
+
+      <section id="assets" class="section">
+        <div class="section-title">
+          <p class="eyebrow">Assets</p>
+          <h2>素材库</h2>
+        </div>
+        <div id="assetGrid" class="grid cards"></div>
+      </section>
+
+      <section id="prompts" class="section split">
+        <div>
+          <div class="section-title">
+            <p class="eyebrow">Prompts</p>
+            <h2>提示词中心</h2>
+          </div>
+          <div id="promptList" class="list"></div>
+        </div>
+        <article class="code-panel">
+          <div class="panel-head">
+            <span id="activePromptName">选择一个提示词</span>
+            <button id="copyPrompt" type="button">复制</button>
+          </div>
+          <pre><code id="promptContent">提示词内容会显示在这里。</code></pre>
+        </article>
+      </section>
+
+      <section id="previews" class="section">
+        <div class="section-title">
+          <p class="eyebrow">Preview</p>
+          <h2>视觉预览</h2>
+        </div>
+        <div id="previewGrid" class="grid preview-grid"></div>
+      </section>
+
+      <section id="register" class="section">
+        <div class="section-title row-title">
+          <div>
+            <p class="eyebrow">Register</p>
+            <h2>输出登记</h2>
+          </div>
+          <select id="statusFilter" aria-label="状态筛选">
+            <option value="全部">全部状态</option>
+            <option value="视觉预览通过">视觉预览通过</option>
+            <option value="待正式尺寸确认">待正式尺寸确认</option>
+            <option value="已保存预览图">已保存预览图</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>图号</th>
+                <th>物料</th>
+                <th>文件</th>
+                <th>状态</th>
+                <th>下一步</th>
+              </tr>
+            </thead>
+            <tbody id="registerTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="queue" class="section">
+        <div class="section-title">
+          <p class="eyebrow">Queue</p>
+          <h2>项目队列</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>图号</th>
+                <th>物料</th>
+                <th>尺寸</th>
+                <th>方向</th>
+                <th>优先级</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody id="queueTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <p class="eyebrow">Reports</p>
+          <h2>检查报告摘要</h2>
+        </div>
+        <div class="report-grid">
+          <article>
+            <h3>输出保存检查</h3>
+            <pre id="outputCheckReport"></pre>
+          </article>
+          <article>
+            <h3>输出审核</h3>
+            <pre id="outputReviewReport"></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Design Automation Workflow 1.1</span>
+      <span>UI 数据由 scripts/deploy_ui.ps1 生成</span>
+    </footer>
+
+    <script src="data/app-data.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>

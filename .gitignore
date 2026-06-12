@@ -1,0 +1,10 @@
+node_modules/
+log/
+tmp/
+preview/
+output_register.csv
+output_register.json
+
+# Local system files
+.DS_Store
+Thumbs.db

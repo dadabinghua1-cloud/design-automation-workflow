@@ -1,0 +1,73 @@
+{
+  "workflow_version": "1.1",
+  "project_name": "20260611_真实小项目测试",
+  "queue_type": "小批量底图测试队列",
+  "description": "记录后续需要生成或保存的图片队列。当前只记录队列，不调用图片生成 API，不接 Figma，不接 Photoshop。",
+  "items": [
+    {
+      "id": "01",
+      "figure": "图1",
+      "material_name": "电子水牌",
+      "size": "1080x1920px",
+      "orientation": "竖版",
+      "prompt_file": "03_prompts/per_material_prompts/01_电子水牌_1080x1920px_prompt.md",
+      "output_file": "01_电子水牌_1080x1920px_v01.png",
+      "output_folder": "04_outputs/preview/",
+      "status": "待生成",
+      "priority": "高",
+      "notes": "小批量测试首张，验证 9:16 竖版和信息区预留。"
+    },
+    {
+      "id": "04",
+      "figure": "图4",
+      "material_name": "云相册三件套3",
+      "size": "2424x1242px",
+      "orientation": "横版",
+      "prompt_file": "03_prompts/per_material_prompts/04_云相册三件套3_2424x1242px_prompt.md",
+      "output_file": "04_云相册三件套3_2424x1242px_v01.png",
+      "output_folder": "04_outputs/preview/",
+      "status": "待生成",
+      "priority": "高",
+      "notes": "验证横版大比例延展和信息区预留。"
+    },
+    {
+      "id": "08",
+      "figure": "图8",
+      "material_name": "签到背景板",
+      "size": "4x2.5m",
+      "orientation": "横版",
+      "prompt_file": "03_prompts/per_material_prompts/08_签到背景板_4x2.5m_prompt.md",
+      "output_file": "08_签到背景板_4x2.5m_v01.png",
+      "output_folder": "04_outputs/preview/",
+      "status": "待生成",
+      "priority": "高",
+      "notes": "验证大背景延展，中部仅预留签到主题区，不生成签到字。"
+    },
+    {
+      "id": "09",
+      "figure": "图9",
+      "material_name": "云摄影二维码立牌",
+      "size": "A4",
+      "orientation": "竖版",
+      "prompt_file": "03_prompts/per_material_prompts/09_云摄影二维码立牌_A4_prompt.md",
+      "output_file": "09_云摄影二维码立牌_A4_v01.png",
+      "output_folder": "04_outputs/preview/",
+      "status": "待生成",
+      "priority": "高",
+      "notes": "验证 A4 竖版和二维码区预留，不生成二维码。"
+    },
+    {
+      "id": "13",
+      "figure": "图13",
+      "material_name": "桌号牌",
+      "size": "10x10cm",
+      "orientation": "方形",
+      "prompt_file": "03_prompts/per_material_prompts/13_桌号牌_10x10cm_prompt.md",
+      "output_file": "13_桌号牌_10x10cm_v01.png",
+      "output_folder": "04_outputs/preview/",
+      "status": "待生成",
+      "priority": "中",
+      "notes": "验证方形底图、桌号数字区和圆形裁切安全区。"
+    }
+  ]
+}

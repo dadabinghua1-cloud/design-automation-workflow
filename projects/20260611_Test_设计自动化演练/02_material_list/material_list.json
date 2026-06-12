@@ -1,0 +1,52 @@
+{
+  "workflow_version": "1.0",
+  "project_name": "",
+  "default_output_type": "底图",
+  "default_rule": "文字、Logo、二维码、箭头、地址默认后期添加；底图需方便 PS / Figma 继续修改。",
+  "naming_rule": "编号_物料名称_尺寸_版本号",
+  "materials": [
+    {
+      "id": "01",
+      "name": "电子水牌底图",
+      "size": "1080x1920",
+      "ratio": "9:16",
+      "orientation": "竖版",
+      "output_type": "底图",
+      "reserved_area": "顶部标题区；底部二维码区",
+      "keep_elements": "主KV核心视觉；品牌色；氛围元素",
+      "remove_elements": "乱码文字；二维码；多余Logo",
+      "priority": "高",
+      "status": "待确认",
+      "notes": "默认只做底图，文字和二维码后期添加"
+    },
+    {
+      "id": "02",
+      "name": "签到背景板底图",
+      "size": "3840x2160",
+      "ratio": "16:9",
+      "orientation": "横版",
+      "output_type": "底图",
+      "reserved_area": "中间签到标题区；两侧留白",
+      "keep_elements": "主KV背景质感；品牌色；主视觉元素",
+      "remove_elements": "乱码文字；多余Logo；复杂粒子",
+      "priority": "高",
+      "status": "待确认",
+      "notes": "适合大屏或喷绘背景，注意主体不要过满"
+    },
+    {
+      "id": "03",
+      "name": "二维码立牌底图",
+      "size": "1080x1920",
+      "ratio": "9:16",
+      "orientation": "竖版",
+      "output_type": "底图",
+      "reserved_area": "中部二维码区；底部地址区；箭头区",
+      "keep_elements": "主KV色彩；简洁背景；轻量装饰",
+      "remove_elements": "二维码；箭头；地址文字；促销元素",
+      "priority": "中",
+      "status": "待确认",
+      "notes": "二维码、箭头、地址默认后期添加"
+    }
+  ]
+}
+
