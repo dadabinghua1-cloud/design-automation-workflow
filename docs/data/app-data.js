@@ -1,5 +1,5 @@
 window.WORKFLOW_DATA = {
-    "generatedAt":  "2026-06-12 15:58:38",
+    "generatedAt":  "2026-06-12 16:11:32",
     "workflowVersion":  "1.1",
     "projectName":  "20260611_真实小项目测试",
     "status":  {
@@ -255,17 +255,49 @@ window.WORKFLOW_DATA = {
                                       "notes":  "目标尺寸为4x2.5m，必须先确认DPI、出血、安全区和交付格式，再决定是否重制或进入印刷文件处理。"
                                   }
                               ],
+    "finalSizeExecutionPlan":  [
+                                   {
+                                       "figure":  "图1",
+                                       "material_name":  "电子水牌",
+                                       "execution_type":  "正式尺寸重制准备",
+                                       "target_size":  "1080x1920px",
+                                       "required_input":  "无需补充规格，等待用户确认是否开始重制",
+                                       "execution_status":  "待用户确认执行",
+                                       "next_action":  "确认后进入正式尺寸重制任务",
+                                       "notes":  "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+                                   },
+                                   {
+                                       "figure":  "图4",
+                                       "material_name":  "云相册三件套3",
+                                       "execution_type":  "正式尺寸重制准备",
+                                       "target_size":  "2424x1242px",
+                                       "required_input":  "无需补充规格，等待用户确认是否开始重制",
+                                       "execution_status":  "待用户确认执行",
+                                       "next_action":  "确认后进入正式尺寸重制任务",
+                                       "notes":  "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+                                   },
+                                   {
+                                       "figure":  "图8",
+                                       "material_name":  "签到背景板",
+                                       "execution_type":  "印刷规格确认准备",
+                                       "target_size":  "4x2.5m",
+                                       "required_input":  "DPI、出血、安全区、交付格式、供应商要求",
+                                       "execution_status":  "等待用户补充规格",
+                                       "next_action":  "用户补充印刷规格后再决定是否重制或进入印刷文件处理",
+                                       "notes":  "只整理规格确认清单，不进入PS/Figma，不生成图片。"
+                                   }
+                               ],
     "nextAction":  {
-                       "title":  "等待尺寸执行确认",
-                       "stage":  "v1.2-final-size-confirmation-draft",
-                       "recommendation":  "先等待用户确认是否开始重制图1、图4，并补充图8印刷规格",
-                       "reason":  "图1和图4已决策为需要重制到目标像素；图8需要确认DPI、出血、安全区和实际交付规格",
+                       "title":  "正式尺寸执行准备已完成",
+                       "stage":  "v1.2-final-size-execution-prep-draft",
+                       "recommendation":  "等待用户确认图1、图4是否进入正式尺寸重制，并补充图8印刷规格",
+                       "reason":  "图1、图4已整理为正式尺寸重制准备；图8仍缺DPI、出血、安全区、交付格式和供应商要求",
                        "blockedActions":  [
                                               "暂不建议继续美化UI",
                                               "暂不建议接API自动出图",
                                               "暂不建议一次性生成全部15张"
                                           ],
-                       "codexCommand":  "请基于当前项目进入正式尺寸执行准备：图1已决策为重制到1080x1920px，图4已决策为重制到2424x1242px，图8需要等待用户补充DPI、出血、安全区和交付格式。请只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop。"
+                       "codexCommand":  "请基于当前项目继续正式尺寸执行准备后的下一步：如果用户确认，整理图1重制到1080x1920px、图4重制到2424x1242px的正式尺寸执行任务；同时等待用户补充图8的DPI、出血、安全区、交付格式和供应商要求。只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop，不要修改视觉风格。"
                    },
     "reports":  {
                     "outputCheck":  "# 输出保存检查报告\r\n\r\n## 检查时间\r\n\r\n2026-06-12 13:44:50\r\n\r\n## 项目名称\r\n\r\n20260611_真实小项目测试\r\n\r\n## preview 文件夹路径\r\n\r\nC:\\Users\\admin\\Desktop\\Design-Automation-Workflow\\projects\\20260611_真实小项目测试\\04_outputs\\preview\r\n\r\n## 队列中需要生成 / 保存的文件\r\n\r\n| 图号 | 物料名称 | 文件名 | 检查结果 |\r\n| --- | --- | --- | --- |\r\n| 图1 | 电子水牌 | 01_电子水牌_1080x1920px_v01.png | 已保存 |\r\n| 图4 | 云相册三件套3 | 04_云相册三件套3_2424x1242px_v01.png | 已保存 |\r\n| 图8 | 签到背景板 | 08_签到背景板_4x2.5m_v01.png | 已保存 |\r\n| 图9 | 云摄影二维码立牌 | 09_云摄影二维码立牌_A4_v01.png | 未找到 |\r\n| 图13 | 桌号牌 | 13_桌号牌_10x10cm_v01.png | 未找到 |\r\n\r\n## 已保存\r\n\r\n- 图1：电子水牌\r\n- 图4：云相册三件套3\r\n- 图8：签到背景板\r\n\r\n## 未保存\r\n\r\n- 图9：云摄影二维码立牌\r\n- 图13：桌号牌\r\n\r\n## 是否可以进入小批量输出审核\r\n\r\n可以对已保存的预览图进入输出审核。当前已保存 3 个，未保存 2 个。\r\n\r\n## 下一步建议\r\n\r\n- 运行 review_outputs.ps1 审核所有状态为：已保存预览图，待输出审核 的项目。\r\n- 手动保存未保存的预览图到 04_outputs/preview/。\r\n- 文件名必须与队列中的 output_file 完全一致。\r\n",

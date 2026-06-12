@@ -1,0 +1,37 @@
+{
+  "workflow_version": "1.2-final-size-execution-prep-draft",
+  "project_name": "20260611_真实小项目测试",
+  "description": "正式尺寸执行准备清单。当前只整理图1、图4重制准备和图8印刷规格确认，不生成图片，不接API，不接Figma或Photoshop。",
+  "items": [
+    {
+      "figure": "图1",
+      "material_name": "电子水牌",
+      "execution_type": "正式尺寸重制准备",
+      "target_size": "1080x1920px",
+      "required_input": "无需补充规格，等待用户确认是否开始重制",
+      "execution_status": "待用户确认执行",
+      "next_action": "确认后进入正式尺寸重制任务",
+      "notes": "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+    },
+    {
+      "figure": "图4",
+      "material_name": "云相册三件套3",
+      "execution_type": "正式尺寸重制准备",
+      "target_size": "2424x1242px",
+      "required_input": "无需补充规格，等待用户确认是否开始重制",
+      "execution_status": "待用户确认执行",
+      "next_action": "确认后进入正式尺寸重制任务",
+      "notes": "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+    },
+    {
+      "figure": "图8",
+      "material_name": "签到背景板",
+      "execution_type": "印刷规格确认准备",
+      "target_size": "4x2.5m",
+      "required_input": "DPI、出血、安全区、交付格式、供应商要求",
+      "execution_status": "等待用户补充规格",
+      "next_action": "用户补充印刷规格后再决定是否重制或进入印刷文件处理",
+      "notes": "只整理规格确认清单，不进入PS/Figma，不生成图片。"
+    }
+  ]
+}

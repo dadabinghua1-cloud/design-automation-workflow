@@ -35,6 +35,7 @@ $registerPath = Join-Path $projectRoot "04_outputs\output_register.json"
 $reviewReportPath = Join-Path $projectRoot "04_outputs\output_review_report.md"
 $checkReportPath = Join-Path $projectRoot "04_outputs\output_check_report.md"
 $finalSizeConfirmationPath = Join-Path $projectRoot "04_outputs\final_size_confirmation.json"
+$finalSizeExecutionPlanPath = Join-Path $projectRoot "04_outputs\final_size_execution_plan.json"
 $promptDir = Join-Path $projectRoot "03_prompts\per_material_prompts"
 $inputRoot = Join-Path $projectRoot "00_input"
 $previewRoot = Join-Path $projectRoot "04_outputs\preview"
@@ -92,6 +93,25 @@ if (Test-Path $finalSizeConfirmationPath) {
                 current_status = [string]$_.current_status
                 size_decision = [string]$_.size_decision
                 final_action = [string]$_.final_action
+                notes = [string]$_.notes
+            }
+        })
+    }
+}
+
+$finalSizeExecutionItems = @()
+if (Test-Path $finalSizeExecutionPlanPath) {
+    $finalSizeExecutionPlan = Read-JsonFile -Path $finalSizeExecutionPlanPath
+    if ($finalSizeExecutionPlan -and $finalSizeExecutionPlan.items) {
+        $finalSizeExecutionItems = @($finalSizeExecutionPlan.items | ForEach-Object {
+            [PSCustomObject]@{
+                figure = [string]$_.figure
+                material_name = [string]$_.material_name
+                execution_type = [string]$_.execution_type
+                target_size = [string]$_.target_size
+                required_input = [string]$_.required_input
+                execution_status = [string]$_.execution_status
+                next_action = [string]$_.next_action
                 notes = [string]$_.notes
             }
         })
@@ -163,16 +183,16 @@ $statusCounts = [PSCustomObject]@{
 }
 
 $nextAction = [PSCustomObject]@{
-    title = "等待尺寸执行确认"
-    stage = "v1.2-final-size-confirmation-draft"
-    recommendation = "先等待用户确认是否开始重制图1、图4，并补充图8印刷规格"
-    reason = "图1和图4已决策为需要重制到目标像素；图8需要确认DPI、出血、安全区和实际交付规格"
+    title = "正式尺寸执行准备已完成"
+    stage = "v1.2-final-size-execution-prep-draft"
+    recommendation = "等待用户确认图1、图4是否进入正式尺寸重制，并补充图8印刷规格"
+    reason = "图1、图4已整理为正式尺寸重制准备；图8仍缺DPI、出血、安全区、交付格式和供应商要求"
     blockedActions = @(
         "暂不建议继续美化UI",
         "暂不建议接API自动出图",
         "暂不建议一次性生成全部15张"
     )
-    codexCommand = "请基于当前项目进入正式尺寸执行准备：图1已决策为重制到1080x1920px，图4已决策为重制到2424x1242px，图8需要等待用户补充DPI、出血、安全区和交付格式。请只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop。"
+    codexCommand = "请基于当前项目继续正式尺寸执行准备后的下一步：如果用户确认，整理图1重制到1080x1920px、图4重制到2424x1242px的正式尺寸执行任务；同时等待用户补充图8的DPI、出血、安全区、交付格式和供应商要求。只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop，不要修改视觉风格。"
 }
 
 $data = [PSCustomObject]@{
@@ -186,6 +206,7 @@ $data = [PSCustomObject]@{
     register = $records
     previews = $previews
     finalSizeConfirmation = $finalSizeItems
+    finalSizeExecutionPlan = $finalSizeExecutionItems
     nextAction = $nextAction
     reports = [PSCustomObject]@{
         outputCheck = $latestCheckReport
