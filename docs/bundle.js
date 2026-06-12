@@ -40,6 +40,7 @@ function text(value, fallback = "未填写") {
 
 function render() {
   $("#projectName").textContent = text(appData.projectName);
+  $("#currentProject").textContent = text(appData.projectName);
   $("#workflowVersion").textContent = text(appData.workflowVersion, "1.1");
   $("#promptTotal").textContent = text(appData.status?.promptTotal, "0");
   $("#visualPassed").textContent = text(appData.status?.visualPassed, "0");
@@ -88,20 +89,36 @@ function renderPrompts() {
 
 function renderPreviews() {
   const grid = $("#previewGrid");
+  const queue = appData.queue || [];
   const previews = appData.previews || [];
-  if (!previews.length) {
-    grid.innerHTML = `<article class="card"><strong>暂无预览图</strong><p>保存图片并运行 deploy_ui.ps1 后会显示缩略图。</p></article>`;
+  const registers = appData.register || [];
+  const reviewRows = parseReviewRows();
+  if (!queue.length) {
+    grid.innerHTML = `<article class="card"><strong>暂无预览队列</strong><p>运行 deploy_ui.ps1 后会读取 image_generation_queue。</p></article>`;
     return;
   }
-  grid.innerHTML = previews.map((preview) => `
+  grid.innerHTML = queue.map((item) => {
+    const preview = previews.find((entry) => entry.name === item.output_file);
+    const register = registers.find((entry) => entry.id === item.id);
+    const review = reviewRows.find((entry) => entry.figure === item.figure || entry.fileName === item.output_file);
+    const isCompleted = Boolean(register && text(register.status, "").includes("视觉预览通过"));
+    const status = isCompleted ? "视觉预览通过，待正式尺寸确认" : "待生成 / 待保存";
+    return `
     <article class="preview-card">
-      <img src="${escapeAttr(preview.url)}" alt="${escapeAttr(preview.name)}" loading="lazy" />
+      ${preview ? `<img src="${escapeAttr(preview.url)}" alt="${escapeAttr(preview.name)}" loading="lazy" />` : `<div class="preview-placeholder">待处理</div>`}
       <div>
-        <strong>${escapeHtml(preview.name)}</strong><br />
-        <small>${escapeHtml(preview.sourcePath)}</small>
+        <strong>${escapeHtml(item.figure)}：${escapeHtml(item.material_name)}</strong><br />
+        <small>${escapeHtml(item.output_file)}</small>
+        <div class="preview-meta">
+          <span>当前状态 <b>${escapeHtml(status)}</b></span>
+          <span>目标尺寸 <b>${escapeHtml(item.size)}</b></span>
+          <span>实际像素 <b>${escapeHtml(review?.actualSize || "待生成")}</b></span>
+          <span>是否最终交付 <b>${isCompleted ? "否" : "未进入"}</b></span>
+        </div>
       </div>
     </article>
-  `).join("");
+  `;
+  }).join("");
 }
 
 function renderRegister() {
@@ -116,23 +133,52 @@ function renderRegister() {
       <td>${escapeHtml(item.material_name)}</td>
       <td>${escapeHtml(item.file_name)}</td>
       <td><span class="status-chip">${escapeHtml(item.status)}</span></td>
+      <td class="comment-cell">${escapeHtml(item.review_comment)}</td>
       <td>${escapeHtml(item.next_action)}</td>
     </tr>
-  `).join("") || `<tr><td colspan="5">暂无登记记录</td></tr>`;
+  `).join("") || `<tr><td colspan="6">暂无登记记录</td></tr>`;
 }
 
 function renderQueue() {
   const rows = appData.queue || [];
+  const registers = appData.register || [];
   $("#queueTable").innerHTML = rows.map((item) => `
     <tr>
       <td>${escapeHtml(item.figure || item.id)}</td>
       <td>${escapeHtml(item.material_name)}</td>
       <td>${escapeHtml(item.size)}</td>
       <td>${escapeHtml(item.orientation)}</td>
+      <td>${queueStatusChip(item, registers)}</td>
       <td>${escapeHtml(item.priority)}</td>
-      <td contenteditable="true" spellcheck="false">${escapeHtml(item.notes)}</td>
+      <td>${escapeHtml(item.notes)}</td>
     </tr>
-  `).join("") || `<tr><td colspan="6">暂无队列记录</td></tr>`;
+  `).join("") || `<tr><td colspan="7">暂无队列记录</td></tr>`;
+}
+
+function queueStatusChip(item, registers) {
+  const register = registers.find((entry) => entry.id === item.id);
+  if (register && text(register.status, "").includes("视觉预览通过")) {
+    return `<span class="status-chip">已完成</span>`;
+  }
+  return `<span class="status-chip waiting">待处理</span>`;
+}
+
+function parseReviewRows() {
+  const report = text(appData.reports?.outputReview, "");
+  return report
+    .split("\n")
+    .filter((line) => line.trim().startsWith("| 图") && !line.includes("---") && !line.includes("图号"))
+    .map((line) => {
+      const parts = line.split("|").map((part) => part.trim()).filter(Boolean);
+      return {
+        figure: parts[0],
+        material: parts[1],
+        fileName: parts[2],
+        targetSize: parts[5],
+        actualSize: parts[6],
+        conclusion: parts[8]
+      };
+    });
 }
 
 function escapeHtml(value) {

@@ -24,6 +24,12 @@ Design Automation Workflow 1.1 GitHub Pages 静态 UI。
 
 当前验收目标是确认该页面是否可以作为查看型管理台使用，不验收上传、自动运行脚本、自动生成图片或设计软件联动。
 
+## v1.2-ui-usability-draft 补充
+
+本次进入 `v1.2-ui-usability-draft`，重点是优化静态 UI 的可用性和信息清晰度。
+
+这不是完整 v1.2 功能发布，不包含 OpenAI Images API、网页上传、自动解析 PPT、自动生成图片、Figma 或 Photoshop 接入。
+
 ## 已通过功能
 
 | 功能 | 验收结果 | 说明 |
@@ -38,6 +44,10 @@ Design Automation Workflow 1.1 GitHub Pages 静态 UI。
 | 显示视觉预览图 | 通过 | 已显示图1、图4、图8 共 3 张预览图 |
 | 显示 output_register 输出登记 | 通过 | 已显示 3 条输出登记 |
 | 显示 image_generation_queue 项目队列 | 通过 | 已显示 5 条小批量队列 |
+| 显示当前项目状态 | 通过 | 已显示当前项目、版本、阶段、已通过图号、待处理图号和当前不能做的事项 |
+| 显示下一步建议 | 通过 | 已显示暂停继续出图、正式尺寸确认优先、API 自动出图后置 |
+| 区分已完成和待处理队列 | 通过 | 图1、图4、图8 为已完成；图9、图13 为待处理 |
+| 区分预览图和最终交付 | 通过 | 图1、图4、图8 均标记为非最终交付 |
 
 ## 未实现功能
 
@@ -78,3 +88,5 @@ Design Automation Workflow 1.1 GitHub Pages 静态 UI。
 通过 1.1 静态验收。
 
 当前 GitHub Pages 静态 UI 已可用于查看项目状态、素材、提示词、视觉预览、输出登记和项目队列。
+
+`v1.2-ui-usability-draft` 后，UI 更适合作为设计自动化项目管理台查看当前阶段、下一步动作和能力边界。
