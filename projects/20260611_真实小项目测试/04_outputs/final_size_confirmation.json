@@ -1,0 +1,37 @@
+{
+  "workflow_version": "1.2-final-size-confirmation-draft",
+  "project_name": "20260611_真实小项目测试",
+  "description": "正式尺寸确认表。当前只记录视觉预览通过但尚未确认最终生产尺寸的图片。",
+  "items": [
+    {
+      "figure": "图1",
+      "material_name": "电子水牌",
+      "target_size": "1080x1920px",
+      "current_pixel_size": "941x1672px",
+      "current_status": "视觉预览通过，待正式尺寸确认",
+      "size_decision": "待确认",
+      "final_action": "待决定",
+      "notes": "当前像素小于目标像素，需确认是否重制、放大或进入 PS / Figma 处理。"
+    },
+    {
+      "figure": "图4",
+      "material_name": "云相册三件套3",
+      "target_size": "2424x1242px",
+      "current_pixel_size": "1752x898px",
+      "current_status": "视觉预览通过，待正式尺寸确认",
+      "size_decision": "待确认",
+      "final_action": "待决定",
+      "notes": "当前像素小于目标像素，需确认是否重制、放大或进入 PS / Figma 处理。"
+    },
+    {
+      "figure": "图8",
+      "material_name": "签到背景板",
+      "target_size": "4x2.5m",
+      "current_pixel_size": "1586x992px",
+      "current_status": "视觉预览通过，待正式尺寸确认",
+      "size_decision": "待确认",
+      "final_action": "待决定",
+      "notes": "目标尺寸为印刷 / 大尺寸规格，需后续确认 DPI、出血和实际交付规格。"
+    }
+  ]
+}

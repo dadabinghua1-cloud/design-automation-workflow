@@ -40,6 +40,32 @@
 - 自动保存图片。
 - Figma / Photoshop 接入。
 
+## v1.2-final-size-confirmation-draft：正式尺寸确认流程草稿
+
+这是正式尺寸确认流程草稿，不是完整自动出图功能。
+
+新增内容：
+
+- 正式尺寸确认指南。
+- `final_size_confirmation.csv`。
+- `final_size_confirmation.json`。
+- `check_final_size.ps1`。
+- `final_size_check_report.md`。
+
+目标：
+
+- 区分视觉预览图和最终交付图。
+- 记录图1、图4、图8 的目标尺寸和当前像素。
+- 判断是否达到最终生产尺寸。
+- 给出重制、放大、PS 处理、Figma 处理或印刷规格确认建议。
+
+仍不包含：
+
+- 自动生成图片。
+- 自动放大图片。
+- OpenAI Images API。
+- Figma / Photoshop 自动化。
+
 ## v1.2 计划：正式尺寸确认与 API 自动出图
 
 计划包含：
