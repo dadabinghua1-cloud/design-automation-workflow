@@ -8,3 +8,8 @@ output_register.json
 # Local system files
 .DS_Store
 Thumbs.db
+
+# Local UI verification screenshots
+docs/*screenshot*.png
+docs/ui-usability-*.png
+docs/next-action-panel-*.png

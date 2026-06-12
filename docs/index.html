@@ -98,6 +98,31 @@
         </div>
       </section>
 
+      <section id="next-action" class="section compact-section">
+        <div class="section-title">
+          <p class="eyebrow">Next Action Panel</p>
+          <h2>下一步指令面板</h2>
+        </div>
+        <article class="next-action-card">
+          <div class="next-action-main">
+            <p class="eyebrow" id="nextActionStage">v1.2-final-size-confirmation-draft</p>
+            <h3 id="nextActionTitle">正式尺寸决策</h3>
+            <dl class="status-list compact-list">
+              <div><dt>当前推荐动作</dt><dd id="nextActionRecommendation">加载中</dd></div>
+              <div><dt>为什么推荐</dt><dd id="nextActionReason">加载中</dd></div>
+              <div><dt>当前不能做</dt><dd><ul id="nextActionBlocked" class="inline-list"></ul></dd></div>
+            </dl>
+          </div>
+          <div class="command-panel">
+            <div class="panel-head">
+              <span>给 Codex 的下一步指令</span>
+              <button id="copyNextAction" type="button">复制指令</button>
+            </div>
+            <textarea id="nextActionCommand" readonly>指令加载中。</textarea>
+          </div>
+        </article>
+      </section>
+
       <section id="assets" class="section">
         <div class="section-title">
           <p class="eyebrow">Assets</p>

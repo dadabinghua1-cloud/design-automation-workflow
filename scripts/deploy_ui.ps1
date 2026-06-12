@@ -34,6 +34,7 @@ $queuePath = Join-Path $projectRoot "04_outputs\image_generation_queue.json"
 $registerPath = Join-Path $projectRoot "04_outputs\output_register.json"
 $reviewReportPath = Join-Path $projectRoot "04_outputs\output_review_report.md"
 $checkReportPath = Join-Path $projectRoot "04_outputs\output_check_report.md"
+$finalSizeConfirmationPath = Join-Path $projectRoot "04_outputs\final_size_confirmation.json"
 $promptDir = Join-Path $projectRoot "03_prompts\per_material_prompts"
 $inputRoot = Join-Path $projectRoot "00_input"
 $previewRoot = Join-Path $projectRoot "04_outputs\preview"
@@ -76,6 +77,25 @@ if ($register -and $register.records) {
             next_action = [string]$_.next_action
         }
     })
+}
+
+$finalSizeItems = @()
+if (Test-Path $finalSizeConfirmationPath) {
+    $finalSizeConfirmation = Read-JsonFile -Path $finalSizeConfirmationPath
+    if ($finalSizeConfirmation -and $finalSizeConfirmation.items) {
+        $finalSizeItems = @($finalSizeConfirmation.items | ForEach-Object {
+            [PSCustomObject]@{
+                figure = [string]$_.figure
+                material_name = [string]$_.material_name
+                target_size = [string]$_.target_size
+                current_pixel_size = [string]$_.current_pixel_size
+                current_status = [string]$_.current_status
+                size_decision = [string]$_.size_decision
+                final_action = [string]$_.final_action
+                notes = [string]$_.notes
+            }
+        })
+    }
 }
 
 $prompts = @()
@@ -142,6 +162,19 @@ $statusCounts = [PSCustomObject]@{
     waitingConfirm = (@($records | Where-Object { $_.status -like "*待正式尺寸确认*" })).Count
 }
 
+$nextAction = [PSCustomObject]@{
+    title = "正式尺寸决策"
+    stage = "v1.2-final-size-confirmation-draft"
+    recommendation = "先确认图1、图4、图8的正式尺寸处理方式"
+    reason = "图1、图4、图8已经视觉预览通过，但还不是最终生产尺寸"
+    blockedActions = @(
+        "暂不建议继续美化UI",
+        "暂不建议接API自动出图",
+        "暂不建议一次性生成全部15张"
+    )
+    codexCommand = "请基于当前项目更新 final_size_confirmation：图1需要重制到1080x1920px；图4需要重制到2424x1242px；图8需要确认印刷规格、DPI、出血和安全区。请更新 final_size_confirmation.csv/json、WORKFLOW_STATUS.md、docs/data/app-data.json，并生成尺寸决策报告。不要生成图片，不要接API，不要接Figma或Photoshop。"
+}
+
 $data = [PSCustomObject]@{
     generatedAt = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     workflowVersion = "1.1"
@@ -152,6 +185,8 @@ $data = [PSCustomObject]@{
     queue = $queueItems
     register = $records
     previews = $previews
+    finalSizeConfirmation = $finalSizeItems
+    nextAction = $nextAction
     reports = [PSCustomObject]@{
         outputCheck = $latestCheckReport
         outputReview = $latestReviewReport

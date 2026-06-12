@@ -50,6 +50,7 @@ function render() {
   renderPreviews();
   renderRegister();
   renderQueue();
+  renderNextAction();
   $("#outputCheckReport").textContent = text(appData.reports?.outputCheck, "暂无输出保存检查报告。");
   $("#outputReviewReport").textContent = text(appData.reports?.outputReview, "暂无输出审核报告。");
 }
@@ -68,6 +69,34 @@ function renderAssets() {
       <p>${escapeHtml(item.path)}</p>
     </article>
   `).join("");
+}
+
+function renderNextAction() {
+  const action = appData.nextAction || {};
+  $("#nextActionStage").textContent = text(action.stage, "未设置阶段");
+  $("#nextActionTitle").textContent = text(action.title, "下一步动作未设置");
+  $("#nextActionRecommendation").textContent = text(action.recommendation, "暂无推荐动作");
+  $("#nextActionReason").textContent = text(action.reason, "暂无原因说明");
+  $("#nextActionCommand").value = text(action.codexCommand, "暂无可复制指令");
+  const blocked = Array.isArray(action.blockedActions) ? action.blockedActions : [];
+  $("#nextActionBlocked").innerHTML = blocked.map((item) => `<li>${escapeHtml(item)}</li>`).join("") || "<li>暂无</li>";
+}
+
+async function copyTextToClipboard(value) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+
+  const helper = document.createElement("textarea");
+  helper.value = value;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "fixed";
+  helper.style.left = "-9999px";
+  document.body.appendChild(helper);
+  helper.select();
+  document.execCommand("copy");
+  helper.remove();
 }
 
 function renderPrompts() {
@@ -217,9 +246,16 @@ $("#themeToggle").addEventListener("click", () => {
 
 $("#copyPrompt").addEventListener("click", async () => {
   if (!activePrompt) return;
-  await navigator.clipboard.writeText(activePrompt.content || "");
+  await copyTextToClipboard(activePrompt.content || "");
   $("#copyPrompt").textContent = "已复制";
   setTimeout(() => { $("#copyPrompt").textContent = "复制"; }, 1200);
+});
+
+$("#copyNextAction").addEventListener("click", async () => {
+  const command = $("#nextActionCommand").value;
+  await copyTextToClipboard(command);
+  $("#copyNextAction").textContent = "已复制";
+  setTimeout(() => { $("#copyNextAction").textContent = "复制指令"; }, 1200);
 });
 
 if (localStorage.getItem("workflow-theme") === "light") {

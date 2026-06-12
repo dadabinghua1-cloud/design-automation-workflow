@@ -327,6 +327,56 @@ h2 {
   color: var(--text);
 }
 
+.next-action-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent) 44%, var(--line));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--panel) 92%, var(--accent) 8%);
+}
+
+.next-action-main h3 {
+  margin-bottom: 16px;
+  font-size: 26px;
+}
+
+.compact-list div {
+  grid-template-columns: 120px minmax(0, 1fr);
+}
+
+.inline-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.command-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.command-panel textarea {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  padding: 16px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  outline: none;
+  resize: vertical;
+  background: var(--panel-2);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.7;
+}
+
 .plain-list,
 .check-list,
 .limit-list {
@@ -562,6 +612,7 @@ footer {
   .split,
   .toolbar,
   .dashboard-grid,
+  .next-action-card,
   .report-grid,
   footer {
     display: grid;

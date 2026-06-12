@@ -66,6 +66,27 @@
 - OpenAI Images API。
 - Figma / Photoshop 自动化。
 
+## v1.2-next-action-panel-draft：下一步指令生成器草稿
+
+这是“下一步指令生成器”草稿，用于减少用户来回询问和复制成本，但还不是自动执行系统。
+
+新增内容：
+
+- `nextAction` 静态数据结构。
+- GitHub Pages 页面中的 Next Action 指令面板。
+- 推荐动作、推荐原因、暂不建议事项展示。
+- 可复制给 Codex 的指令文本框。
+- 复制指令按钮。
+- `NEXT_ACTION_PANEL_GUIDE.md`。
+
+仍不包含：
+
+- 自动运行 Codex。
+- 后台写入。
+- GitHub Actions 自动触发。
+- OpenAI Images API。
+- Figma / Photoshop 接入。
+
 ## v1.2 计划：正式尺寸确认与 API 自动出图
 
 计划包含：
