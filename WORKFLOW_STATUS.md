@@ -21,6 +21,12 @@ Design Automation Workflow 1.1 + 静态 UI 原型
 - 输出审核
 - GitHub Pages 静态 UI
 
+## GitHub Pages 静态 UI 状态
+
+GitHub Pages 静态 UI 已完成 1.1 查看型管理台验收，可用于查看项目状态、素材、提示词、视觉预览和输出登记。
+
+当前 UI 只负责展示，不自动上传文件、不自动运行脚本、不自动生成图片、不自动调用 Codex，也不接 Figma / Photoshop。数据刷新仍通过 `scripts/deploy_ui.ps1` 完成。
+
 ## 当前已跑通的真实项目
 
 ```text
