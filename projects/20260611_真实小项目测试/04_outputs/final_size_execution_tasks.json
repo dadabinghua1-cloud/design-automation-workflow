@@ -1,0 +1,43 @@
+{
+  "workflow_version": "1.2-final-size-execution-task-draft",
+  "project_name": "20260611_真实小项目测试",
+  "description": "正式尺寸执行任务清单。当前只整理任务，不生成图片，不接API，不接Figma或Photoshop，不修改视觉风格。",
+  "tasks": [
+    {
+      "task_id": "FS-001",
+      "figure": "图1",
+      "material_name": "电子水牌",
+      "task_type": "正式尺寸重制任务",
+      "target_size": "1080x1920px",
+      "source_status": "视觉预览通过，待正式尺寸确认",
+      "required_output": "1080x1920px正式尺寸底图",
+      "execution_status": "任务已整理，待后续执行",
+      "constraints": "不生成图片；不接API；不接Figma/Photoshop；不改视觉风格",
+      "notes": "后续执行时应保持已验证主KV风格和预留区规则。"
+    },
+    {
+      "task_id": "FS-002",
+      "figure": "图4",
+      "material_name": "云相册三件套3",
+      "task_type": "正式尺寸重制任务",
+      "target_size": "2424x1242px",
+      "source_status": "视觉预览通过，待正式尺寸确认",
+      "required_output": "2424x1242px正式尺寸底图",
+      "execution_status": "任务已整理，待后续执行",
+      "constraints": "不生成图片；不接API；不接Figma/Photoshop；不改视觉风格",
+      "notes": "后续执行时应保持已验证主KV风格和横版构图。"
+    },
+    {
+      "task_id": "FS-003",
+      "figure": "图8",
+      "material_name": "签到背景板",
+      "task_type": "印刷规格补充任务",
+      "target_size": "4x2.5m",
+      "source_status": "视觉预览通过，待正式尺寸确认",
+      "required_output": "DPI、出血、安全区、交付格式、供应商要求",
+      "execution_status": "等待用户补充规格",
+      "constraints": "不生成图片；不接API；不接Figma/Photoshop；不改视觉风格",
+      "notes": "补齐印刷规格后再决定是否整理正式重制任务。"
+    }
+  ]
+}

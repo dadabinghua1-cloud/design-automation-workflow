@@ -6,22 +6,22 @@
     {
       "figure": "图1",
       "material_name": "电子水牌",
-      "execution_type": "正式尺寸重制准备",
+      "execution_type": "正式尺寸重制任务整理",
       "target_size": "1080x1920px",
-      "required_input": "无需补充规格，等待用户确认是否开始重制",
-      "execution_status": "待用户确认执行",
-      "next_action": "确认后进入正式尺寸重制任务",
-      "notes": "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+      "required_input": "无需补充规格",
+      "execution_status": "正式尺寸执行任务已整理，待后续执行",
+      "next_action": "后续如用户确认生成方式，再进入重制执行",
+      "notes": "只整理任务，不生成图片。当前视觉预览图不能作为最终交付图。"
     },
     {
       "figure": "图4",
       "material_name": "云相册三件套3",
-      "execution_type": "正式尺寸重制准备",
+      "execution_type": "正式尺寸重制任务整理",
       "target_size": "2424x1242px",
-      "required_input": "无需补充规格，等待用户确认是否开始重制",
-      "execution_status": "待用户确认执行",
-      "next_action": "确认后进入正式尺寸重制任务",
-      "notes": "只整理执行准备，不生成图片。当前视觉预览图不能作为最终交付图。"
+      "required_input": "无需补充规格",
+      "execution_status": "正式尺寸执行任务已整理，待后续执行",
+      "next_action": "后续如用户确认生成方式，再进入重制执行",
+      "notes": "只整理任务，不生成图片。当前视觉预览图不能作为最终交付图。"
     },
     {
       "figure": "图8",
