@@ -205,16 +205,16 @@ $statusCounts = [PSCustomObject]@{
 }
 
 $nextAction = [PSCustomObject]@{
-    title = "正式尺寸执行任务已整理"
-    stage = "v1.2-final-size-execution-task-draft"
-    recommendation = "确认图1、图4的正式尺寸重制执行方式，并补充图8印刷规格"
-    reason = "图1、图4已整理为正式尺寸重制任务；图8仍缺DPI、出血、安全区、交付格式和供应商要求"
+    title = "等待后续正式尺寸重制执行"
+    stage = "v1.2-usable-draft-freeze"
+    recommendation = "当前版本已完成可使用草稿版收口。下一步可在额度充足时继续图1、图4正式尺寸重制，图8等待印刷规格。"
+    reason = "图1、图4已整理为正式尺寸重制任务；图8仍缺DPI、出血、安全区、交付格式和供应商要求；图9、图13暂时待测试。"
     blockedActions = @(
         "暂不建议继续美化UI",
         "暂不建议接API自动出图",
         "暂不建议一次性生成全部15张"
     )
-    codexCommand = "请基于当前项目继续正式尺寸执行任务后的下一步：确认图1、图4的正式尺寸重制执行方式；等待用户补充图8的DPI、出血、安全区、交付格式和供应商要求。只更新流程文件、执行清单和状态报告；不要生成图片，不要接API，不要接Figma或Photoshop，不要修改视觉风格。"
+    codexCommand = "请基于当前项目在用户确认后继续图1、图4正式尺寸重制执行准备；图8继续等待用户补充DPI、出血、安全区、交付格式和供应商要求。只更新流程文件、执行清单、状态报告和Next Action；不要生成图片，不要接API，不要接Figma或Photoshop，不要修改视觉风格。"
 }
 
 $data = [PSCustomObject]@{
