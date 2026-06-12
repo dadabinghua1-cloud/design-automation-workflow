@@ -109,6 +109,16 @@
 - 不自动运行 Codex。
 - 需要用户手动 commit / push 更新 GitHub Pages。
 
+## v1.2-display-fix：页面版本显示修正
+
+这是页面版本显示修正，不是新功能发布。
+
+修正内容：
+
+- 顶部 Hero 区显示 `Workflow v1.2`。
+- 版本卡片显示 `v1.2`。
+- 静态数据中的 `workflowVersion` 同步为 `v1.2`。
+
 ## v1.2 计划：正式尺寸确认与 API 自动出图
 
 计划包含：

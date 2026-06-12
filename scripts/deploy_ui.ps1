@@ -219,7 +219,7 @@ $nextAction = [PSCustomObject]@{
 
 $data = [PSCustomObject]@{
     generatedAt = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
-    workflowVersion = "1.1"
+    workflowVersion = "v1.2"
     projectName = $InputProjectName
     status = $statusCounts
     assets = $assets

@@ -1,6 +1,6 @@
 const fallbackData = {
   generatedAt: "未生成",
-  workflowVersion: "1.1",
+  workflowVersion: "v1.2",
   projectName: "Design Automation Workflow",
   status: { queueTotal: 0, promptTotal: 0, previewTotal: 0, registerTotal: 0, visualPassed: 0, waitingConfirm: 0 },
   assets: [],
@@ -41,7 +41,7 @@ function text(value, fallback = "未填写") {
 function render() {
   $("#projectName").textContent = text(appData.projectName);
   $("#currentProject").textContent = text(appData.projectName);
-  $("#workflowVersion").textContent = text(appData.workflowVersion, "1.1");
+  $("#workflowVersion").textContent = text(appData.workflowVersion, "v1.2");
   $("#promptTotal").textContent = text(appData.status?.promptTotal, "0");
   $("#visualPassed").textContent = text(appData.status?.visualPassed, "0");
 
